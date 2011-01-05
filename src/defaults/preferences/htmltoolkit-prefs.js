@@ -9,3 +9,7 @@ pref('extensions.htmltoolkit.cssFillUpStopper.enabled', 'true');
 
 pref('extensions.htmltoolkit.installedVersion', 'first-run');
 pref('extensions.htmltoolkit.isRegistered', 'false');
+
+pref('extensions.htmltoolkit.preview.type', 'split');
+pref('extensions.htmltoolkit.preview.render', 'interpreted');
+pref('extensions.htmltoolkit.preview.position', 'below');

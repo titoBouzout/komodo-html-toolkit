@@ -11,6 +11,59 @@
     <script type="application/x-javascript"             src="chrome://htmltoolkit/content/htmltoolkit.js" />
     <script type="application/x-javascript"             src="chrome://htmltoolkit/content/scripts/statusbar.js" />
 
+	<!-- preview toolbarbuttons -->
+	<toolbaritem id="toolsToolbar">
+	   <toolbarseparator insertbefore="buttonBrowserPreview"/>
+	   <toolbarbutton
+		   label="Code" tooltiptext="Code View" id="htmltoolkit_preview_type_code"
+		   buttonstyle="pictures" persist="buttonstyle"
+		   type="radio" group="htmltoolkit_preview_type" insertbefore="buttonBrowserPreview"
+		   image="chrome://htmltoolkit/skin/preview/code.png"
+		   oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewType:'code'});"/>
+	   <toolbarbutton
+		   label="Design" tooltiptext="Design View" id="htmltoolkit_preview_type_design"
+		   buttonstyle="pictures" persist="buttonstyle"
+		   type="radio" group="htmltoolkit_preview_type"  insertbefore="buttonBrowserPreview"
+		   image="chrome://htmltoolkit/skin/preview/preview.png"
+		   oncommand=" extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewType:'design'});"/>
+	   <toolbarbutton
+		   label="Split" tooltiptext="Split View"  id="htmltoolkit_preview_type_split"
+		   buttonstyle="pictures" persist="buttonstyle"
+		   type="radio" group="htmltoolkit_preview_type"  insertbefore="buttonBrowserPreview"
+		   image="chrome://htmltoolkit/skin/preview/split.png"
+		   oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewType:'split'});"/>
+	   <toolbarbutton
+		   label="Options" tooltiptext="Preview Options" id="htmltoolkit_preview_options"
+		   buttonstyle="pictures" persist="buttonstyle"
+		   type="button" insertbefore="buttonBrowserPreview"
+		   image="chrome://htmltoolkit/skin/preview/options.png"
+		   oncommand="this.firstChild.openPopup(this, 'after_start');"
+		 >
+		  <menupopup onpopupshowing="extensions.htmlToolkit.module.preview.dispatcher.updateUIOptionsMenu(this)">
+			<menuitem label="Preview as interpreted HTML" accesskey="H" type="radio" name="htmltoolkit_preview_as"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewRender:'interpreted'})"/>	
+			<menuitem label="Preview as URL" accesskey="U" type="radio" name="htmltoolkit_preview_as"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewRender:'url'})"/>	
+			<menuitem label="Preview as File" accesskey="F" type="radio" name="htmltoolkit_preview_as"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewRender:'file'})"/>	
+			<menuseparator/>
+			<menuitem label="Split to Above" accesskey="A" type="radio" name="htmltoolkit_preview_position"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewPosition:'above', viewType:'split'})"/>
+			<menuitem label="Split to Right" accesskey="R" type="radio" name="htmltoolkit_preview_position"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewPosition:'right', viewType:'split'})"/>
+			<menuitem label="Split to Left" accesskey="L" type="radio" name="htmltoolkit_preview_position"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewPosition:'left', viewType:'split'})"/>
+			<menuitem label="Split to Below" accesskey="B" type="radio" name="htmltoolkit_preview_position"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.checkAndInstall(null, {viewPosition:'below', viewType:'split'})"/>
+			<menuseparator/>
+			<menuitem
+					  label="Save Options as Defaults" accesskey="S"
+					  class="menuitem-iconic" image="chrome://komodo/skin/images/save.png"
+					  oncommand="extensions.htmlToolkit.module.preview.dispatcher.saveDefaultOptions()"/>
+		  </menupopup>
+	   </toolbarbutton>
+	 </toolbaritem>
+  
     <popupset id="extensionPopupSet">
         <panel id="customIndentation_panel"
                onpopupshown="document.getElementById('customIndentation_scale').focus();">

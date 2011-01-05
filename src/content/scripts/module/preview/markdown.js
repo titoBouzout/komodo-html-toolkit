@@ -6,7 +6,7 @@ var MARKDOWN_CONVERTER = new $toolkit.external.showdown.Showdown.converter();
 $self.controller = function() {
 
 	// Call parent's constructor
-	$toolkit.module.preview.controller.apply(this, ['Markdown', false, false, MARKDOWN_CONVERTER.makeHtml]);
+	$toolkit.module.preview.controller.apply(this, [['Markdown'], false, false, MARKDOWN_CONVERTER.makeHtml, false, true]);
 };
 
 $self.registerAll = function() {
