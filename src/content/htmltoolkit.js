@@ -200,8 +200,11 @@ if (typeof (extensions) === 'undefined')
 		consoleService.logStringMessage(message);
 	};
 
-	$toolkit.pref = function(key) {
+	$toolkit.pref = function(key, value) {
+	  if(typeof(value) == 'undefined')
 		return prefsBranch.getCharPref(key);
+	  else
+		prefsBranch.setCharPref(key, value);
 	};
 
 	$toolkit.registerAll('module');
